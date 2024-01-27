@@ -1,0 +1,58 @@
+name: HamsterCoin
+version: '${project.version}'
+main: me.thegoldenmine.com.hamstercoin.HamsterCoin
+api-version: 1.16
+authors: [ TheGoldenMine ]
+description: A simple coin plugin
+website: https://www.spigotmc.org/members/thegoldenmine.1437483/
+commands:
+  paycoin:
+    description: You can pay coins to others
+    usage: /paycoin <playername> <money>
+    aliases: [pc]
+    permission-message: You dn't have permission to use this command
+    permission: hamster.pay
+  resetcoin:
+    description: Sets the coins to zero
+    usage: /resetcoin <playernae>
+    aliases: [rc]
+    permission-message: You dn't have permission to use this command
+    permission: hamster.reset
+  setcoin:
+    description: Sets the amaunt of coins to player
+    usage: /setcoin <playername> <money>
+    aliases: [sc]
+    permission-message: You dn't have permission to use this command
+    permission: hamster.set
+  givecoin:
+    description: Give some money to player without paying
+    aliases: [gc]
+    usage: /givecoin <playername> <money>
+    permission-message: You don't have permisson to use this command
+    permission: hamster.give
+  uuid:
+    description: You can see your uuid
+    aliases: [u]
+    usage: /uuid
+  hamsterbal:
+    description: You can see your balance
+    usage: /hamsterbal
+    aliases: [hb]
+    permission: hamster.bal
+    permission-message: You don't have permission to use this command
+permissions:
+  hamster.bal:
+    description: You can use /hamsterbal command
+    default: op
+  hamster.give:
+    description: You can give money to players without paying
+    default: op
+  hamster.set:
+    description: You can use command /setcoin
+    default: op
+  hamster.pay:
+    default: op
+    description: You can use command /paycoin
+  hamster.reset:
+    default: op
+    description: You can use command /resetcoin
