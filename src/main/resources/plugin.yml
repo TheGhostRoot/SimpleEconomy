@@ -1,58 +1,50 @@
-name: HamsterCoin
+name: HexCoin
 version: '${project.version}'
-main: me.thegoldenmine.com.hamstercoin.HamsterCoin
+main: me.thegoldenmine.com.hamstercoin.HexCoin
 api-version: 1.16
 authors: [ TheGoldenMine ]
 description: A simple coin plugin
 website: https://www.spigotmc.org/members/thegoldenmine.1437483/
 commands:
-  paycoin:
+  payhex:
     description: You can pay coins to others
-    usage: /paycoin <playername> <money>
-    aliases: [pc]
-    permission-message: You dn't have permission to use this command
-    permission: hamster.pay
-  resetcoin:
+    usage: /payhex <playername> <money>
+    permission-message: You don't have permission to use this command
+    permission: hex.pay
+  resethex:
     description: Sets the coins to zero
-    usage: /resetcoin <playernae>
-    aliases: [rc]
-    permission-message: You dn't have permission to use this command
-    permission: hamster.reset
-  setcoin:
-    description: Sets the amaunt of coins to player
-    usage: /setcoin <playername> <money>
-    aliases: [sc]
-    permission-message: You dn't have permission to use this command
-    permission: hamster.set
-  givecoin:
+    usage: /resethex <playername>
+    permission-message: You don't have permission to use this command
+    permission: hex.reset
+  sethex:
+    description: Sets the amount of coins to player
+    usage: /sethex <playername> <money>
+    permission-message: You don't have permission to use this command
+    permission: hex.set
+  givehex:
     description: Give some money to player without paying
-    aliases: [gc]
-    usage: /givecoin <playername> <money>
-    permission-message: You don't have permisson to use this command
-    permission: hamster.give
-  uuid:
-    description: You can see your uuid
-    aliases: [u]
-    usage: /uuid
-  hamsterbal:
+    usage: /givehex <playername> <money>
+    permission-message: You don't have permission to use this command
+    permission: hex.give
+  balhex:
     description: You can see your balance
-    usage: /hamsterbal
+    usage: /balhex
     aliases: [hb]
-    permission: hamster.bal
+    permission: hex.bal
     permission-message: You don't have permission to use this command
 permissions:
-  hamster.bal:
-    description: You can use /hamsterbal command
+  hex.bal:
+    description: You can use /balhex
     default: op
-  hamster.give:
+  hex.give:
     description: You can give money to players without paying
     default: op
-  hamster.set:
-    description: You can use command /setcoin
+  hex.set:
+    description: You can use command /sethex
     default: op
-  hamster.pay:
+  hex.pay:
     default: op
-    description: You can use command /paycoin
-  hamster.reset:
+    description: You can use command /payhex
+  hex.reset:
     default: op
-    description: You can use command /resetcoin
+    description: You can use command /resethex
