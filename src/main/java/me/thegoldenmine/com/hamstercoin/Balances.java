@@ -33,8 +33,8 @@ public class Balances {
         if (!dataFile.exists() && dataFile.createNewFile()) {
             plugin.getLogger().info("Made the file for economy");
         }
-        setMessages();
         reload();
+        setMessages();
     }
 
     synchronized public void pay(Player payer, Player payee, double money) {
