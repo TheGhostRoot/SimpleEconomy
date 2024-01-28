@@ -29,10 +29,17 @@ commands:
   balhex:
     description: You can see your balance
     usage: /balhex
-    aliases: [hb]
     permission: hex.bal
     permission-message: You don't have permission to use this command
+  reloadhex:
+    description: You can reload the config
+    usage: /reloadhex
+    permission: hex.reload
+    permission-message: You don't have permission to use this command
 permissions:
+  hex.reload:
+    description: You can use /reloadhex
+    default: op
   hex.bal:
     description: You can use /balhex
     default: op

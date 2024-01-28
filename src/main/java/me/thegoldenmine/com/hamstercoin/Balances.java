@@ -125,6 +125,11 @@ public class Balances {
         return m == null ? "You have set the balance of /player/ to /money/" : plugin.translateColors(String.valueOf(m), map);
     }
 
+    public String getConsoleName() {
+        Object m = data.get("console_name");
+        return m == null ? "CONSOLE": plugin.translateColors(String.valueOf(m), null);
+    }
+
     public void setMessages() {
         data.set("got_payed", "You have been payed /money/ from /player/");
         data.set("not_enough_money", "You don't have enough money");
@@ -133,6 +138,7 @@ public class Balances {
         data.set("reset_balance", "You have rested the /player/ balance to 0");
         data.set("set_bal", "You have set the balance of /player/ to /money/");
         data.set("balance", "Your balance is /money/");
+        data.set("console_name", "CONSOLE");
         data.set("error_give_yourself", "You can't give yourself money");
         data.set("error_missing_permission", "You don't have /permissions/");
         data.set("error_missing_argument", "Missing /arg/");
@@ -144,8 +150,9 @@ public class Balances {
     public static double formatMoney(double money) {
         String money_text = String.valueOf(money);
         if (money_text.contains(".")) {
-            String head_money_text = money_text.split("\\.")[0];
-            String tail_money_text = money_text.split("\\.")[1];
+            String[] f = money_text.split("\\.");
+            String head_money_text = f[0];
+            String tail_money_text = f[1];
             if (tail_money_text.length() > 2) {
                 tail_money_text = tail_money_text.substring(0, 2);
 
