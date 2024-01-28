@@ -65,7 +65,7 @@ public final class HexCoin extends JavaPlugin {
         getCommand("resethex").setExecutor(new ResetCommand(this));
         getCommand("sethex").setExecutor(new SetCommand(this));
         getCommand("givehex").setExecutor(new GiveCommand(this));
-        getCommand("hamsterbal").setExecutor(new BalCommand(this));
+        getCommand("balhex").setExecutor(new BalCommand(this));
 
         getLogger().info("Plugin Loaded!");
     }
