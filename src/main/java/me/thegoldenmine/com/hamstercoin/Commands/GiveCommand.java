@@ -40,15 +40,13 @@ public class GiveCommand implements CommandExecutor {
                 return true;
             }
 
-            double money = Balances.formatMoney(tempMoney);
-
-            plugin.balances.give(peyee.getUniqueId(), money);
+            plugin.balances.give(peyee.getUniqueId(), tempMoney);
 
             if (peyee.isOnline()) {
-                peyee.sendMessage(plugin.balances.getYouGotPayedMessage(money, player.getDisplayName()));
+                peyee.sendMessage(plugin.balances.getYouGotPayedMessage(tempMoney, player.getDisplayName()));
             }
 
-            player.sendMessage(plugin.balances.getYouPayedMessage(money, peyee.getDisplayName()));
+            player.sendMessage(plugin.balances.getYouPayedMessage(tempMoney, peyee.getDisplayName()));
             return true;
         }
 
@@ -70,12 +68,10 @@ public class GiveCommand implements CommandExecutor {
                 return true;
             }
 
-            double money = Balances.formatMoney(tempMoney);
-
-            plugin.balances.give(peyee.getUniqueId(), money);
+            plugin.balances.give(peyee.getUniqueId(), tempMoney);
 
             if (peyee.isOnline()) {
-                peyee.sendMessage(plugin.balances.getYouGotPayedMessage(money, plugin.balances.getConsoleName()));
+                peyee.sendMessage(plugin.balances.getYouGotPayedMessage(tempMoney, plugin.balances.getConsoleName()));
             }
         }
         return true;

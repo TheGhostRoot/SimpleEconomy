@@ -62,12 +62,11 @@ public class Balances {
     }
 
     public String getYouGotPayedMessage(double money, String senderName) {
-        double newMoney = formatMoney(money);
         Object m = data.get("got_payed");
         HashMap<String, String> args = new HashMap<>();
-        args.put("money", String.valueOf(newMoney));
+        args.put("money", String.valueOf(money));
         args.put("sender", senderName);
-        return m == null ? "You have been payed " + newMoney + " from " + senderName : plugin.translateColors(String.valueOf(m), args);
+        return m == null ? "You have been payed " + money + " from " + senderName : plugin.translateColors(String.valueOf(m), args);
     }
 
     public String getMissingArgumentMessage(String arguments) {
@@ -78,20 +77,18 @@ public class Balances {
     }
 
     public String getYouPayedMessage(double money, String resiveName) {
-        double newMoney = formatMoney(money);
         Object m = data.get("send_payment");
         HashMap<String, String> args = new HashMap<>();
-        args.put("money", String.valueOf(newMoney));
+        args.put("money", String.valueOf(money));
         args.put("sender", resiveName);
-        return m == null ? "You have payed " + newMoney + " to " + resiveName : plugin.translateColors(String.valueOf(m), args);
+        return m == null ? "You have payed " + money + " to " + resiveName : plugin.translateColors(String.valueOf(m), args);
     }
 
     public String getYourBalanceMessage(double money) {
-        double newMoney = formatMoney(money);
         Object m = data.get("balance");
         HashMap<String, String> args = new HashMap<>();
-        args.put("money", String.valueOf(newMoney));
-        return m == null ? "Your balance is " + newMoney : plugin.translateColors(String.valueOf(m), args);
+        args.put("money", String.valueOf(money));
+        return m == null ? "Your balance is " + money : plugin.translateColors(String.valueOf(m), args);
     }
 
     public String getMissingPermissionsMessage(String permissions) {
@@ -148,31 +145,6 @@ public class Balances {
     }
 
 
-    public static double formatMoney(double money) {
-        String money_text = String.valueOf(money);
-        if (money_text.contains(".")) {
-            String[] f = money_text.split("\\.");
-            String head_money_text = f[0];
-            String tail_money_text = f[1];
-            if (tail_money_text.length() > 2) {
-                tail_money_text = tail_money_text.substring(0, 2);
-
-            } else if (tail_money_text.length() == 1) {
-                tail_money_text = tail_money_text + "0";
-
-            }
-
-            money_text = head_money_text + tail_money_text;
-        }
-
-        try {
-            return Double.parseDouble(money_text);
-
-        } catch (Exception e) {
-            return 0;
-        }
-    }
-
     synchronized public void give(UUID payee, double money) {
         setBalance(payee, getBalance(payee) + money);
         save();
@@ -187,11 +159,11 @@ public class Balances {
             return 0;
         }
 
-        return formatMoney(balance);
+        return balance;
     }
 
     synchronized public void setBalance(UUID playerUuid, double amount) {
-        data.set("balance_" + playerUuid, formatMoney(amount));
+        data.set("balance_" + playerUuid, amount);
         save();
         reload();
     }

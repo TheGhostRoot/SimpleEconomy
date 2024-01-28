@@ -44,10 +44,8 @@ public class SetCommand implements CommandExecutor {
                 return true;
             }
 
-            double money = Balances.formatMoney(tempMoney);
-
-            plugin.balances.setBalance(playerToSet.getUniqueId(), money);
-            player.sendMessage(plugin.balances.getSetBalMessage(playerToSet.getDisplayName(), money));
+            plugin.balances.setBalance(playerToSet.getUniqueId(), tempMoney);
+            player.sendMessage(plugin.balances.getSetBalMessage(playerToSet.getDisplayName(), tempMoney));
 
         }
         return true;

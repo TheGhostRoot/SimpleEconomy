@@ -43,9 +43,7 @@ public class PayCommand implements CommandExecutor {
                 return true;
             }
 
-            double money = Balances.formatMoney(tempMoney);
-
-            plugin.balances.pay(player, res, money);
+            plugin.balances.pay(player, res, tempMoney);
             return true;
         }
         return true;
