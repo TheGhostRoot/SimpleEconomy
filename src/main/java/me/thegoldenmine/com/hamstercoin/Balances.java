@@ -53,6 +53,7 @@ public class Balances {
                 payer.sendMessage(getYouPayedMessage(money, payee.getDisplayName()));
                 payee.sendMessage(getYouGotPayedMessage(money, payer.getDisplayName()));
                 save();
+                reload();
 
             } else {
                 payer.sendMessage(getCantGiveYourselfMessage());
@@ -175,10 +176,11 @@ public class Balances {
     synchronized public void give(UUID payee, double money) {
         setBalance(payee, getBalance(payee) + money);
         save();
+        reload();
     }
 
     synchronized public double getBalance(UUID playerUuid) {
-        Double balance = (Double) data.get("balance-" + playerUuid);
+        Double balance = (Double) data.get("balance_" + playerUuid);
         if (balance == null) {
             setBalance(playerUuid, 0.0);
             save();
@@ -189,7 +191,7 @@ public class Balances {
     }
 
     synchronized public void setBalance(UUID playerUuid, double amount) {
-        data.set("balance-" + playerUuid, formatMoney(amount));
+        data.set("balance_" + playerUuid, formatMoney(amount));
         save();
         reload();
     }
