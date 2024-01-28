@@ -23,7 +23,7 @@ public class ReloadHexCommand implements CommandExecutor {
                 player.sendMessage("reloaded!");
 
             } else {
-                player.sendMessage(plugin.balances.getMissingPermissionsMessage("hex.bal"));
+                player.sendMessage(plugin.balances.getMissingPermissionsMessage("hex.reload"));
             }
         }
         return true;

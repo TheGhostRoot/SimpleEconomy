@@ -33,10 +33,13 @@ public class GiveCommand implements CommandExecutor {
                 return true;
             }
 
+            plugin.getLogger().info(args.toString());
+
             double tempMoney;
             try {
                 tempMoney = Double.parseDouble(String.valueOf(args[1]));
             } catch (Exception e) {
+                e.printStackTrace();
                 return true;
             }
 

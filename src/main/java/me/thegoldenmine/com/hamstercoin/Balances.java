@@ -30,11 +30,16 @@ public class Balances {
             }
         }
         dataFile = new File(dataFolder, "balance.yml");
+        reload();
         if (!dataFile.exists() && dataFile.createNewFile()) {
             setMessages();
             plugin.getLogger().info("Made the file for economy");
         }
-        reload();
+        try {
+            data.load(dataFile);
+        } catch (Exception e) {
+            plugin.getLogger().info("Can't load data");
+        }
     }
 
     synchronized public void pay(Player payer, Player payee, double money) {
