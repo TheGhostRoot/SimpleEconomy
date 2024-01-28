@@ -178,7 +178,7 @@ public class Balances {
     }
 
     synchronized public double getBalance(UUID playerUuid) {
-        Double balance = (Double) data.get("balance[.=" + playerUuid + "]");
+        Double balance = (Double) data.get("balance-" + playerUuid);
         if (balance == null) {
             setBalance(playerUuid, 0.0);
             save();
@@ -189,7 +189,7 @@ public class Balances {
     }
 
     synchronized public void setBalance(UUID playerUuid, double amount) {
-        data.set("balance[.=" + playerUuid + "]", formatMoney(amount));
+        data.set("balance-" + playerUuid, formatMoney(amount));
         save();
         reload();
     }
