@@ -28,7 +28,7 @@ public class GiveCommand implements CommandExecutor {
             }
 
             Player peyee = Bukkit.getPlayer(String.valueOf(args[0]));
-            if (peyee == null) {
+            if (peyee == null || peyee.equals(player)) {
                 return true;
             }
 

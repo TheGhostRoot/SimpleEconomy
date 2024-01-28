@@ -143,8 +143,8 @@ public class Balances {
 
     public static double formatMoney(double money) {
         String money_text = String.valueOf(money);
-        String head_money_text = money_text.split("\\.")[0];
         if (money_text.contains(".")) {
+            String head_money_text = money_text.split("\\.")[0];
             String tail_money_text = money_text.split("\\.")[1];
             if (tail_money_text.length() > 2) {
                 tail_money_text = tail_money_text.substring(0, 2);
