@@ -70,7 +70,7 @@ public class Balances {
         Object m = data.get("got_payed");
         HashMap<String, String> args = new HashMap<>();
         args.put("money", String.valueOf(money));
-        args.put("sender", senderName);
+        args.put("player", senderName);
         return m == null ? "You have been payed " + money + " from " + senderName : plugin.translateColors(String.valueOf(m), args);
     }
 
@@ -85,7 +85,7 @@ public class Balances {
         Object m = data.get("send_payment");
         HashMap<String, String> args = new HashMap<>();
         args.put("money", String.valueOf(money));
-        args.put("sender", resiveName);
+        args.put("player", resiveName);
         return m == null ? "You have payed " + money + " to " + resiveName : plugin.translateColors(String.valueOf(m), args);
     }
 
@@ -117,7 +117,7 @@ public class Balances {
         Object m = data.get("reset_balance");
         HashMap<String, String> map = new HashMap<>();
         map.put("player", resetPlayerName);
-        return m == null ? "You don't have enough money": plugin.translateColors(String.valueOf(m), map);
+        return m == null ? "Your money were set to 0" : plugin.translateColors(String.valueOf(m), map);
     }
 
     public String getSetBalMessage(String playerName, double money) {
