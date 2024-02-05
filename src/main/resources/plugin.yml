@@ -36,7 +36,15 @@ commands:
     usage: /reloadhex
     permission: hex.reload
     permission-message: You don't have permission to use this command
+  takehex:
+    description: You can take hex from players
+    usage: /takehex <playername> <money>
+    permission: hex.take
+    permission-message: You don't have permission to use this command
 permissions:
+  hex.take:
+    description: You can use /takehex
+    default: op
   hex.reload:
     description: You can use /reloadhex
     default: op
