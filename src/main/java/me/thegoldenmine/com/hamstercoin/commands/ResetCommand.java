@@ -1,4 +1,4 @@
-package me.thegoldenmine.com.hamstercoin.Commands;
+package me.thegoldenmine.com.hamstercoin.commands;
 
 import me.thegoldenmine.com.hamstercoin.HexCoin;
 import org.bukkit.Bukkit;

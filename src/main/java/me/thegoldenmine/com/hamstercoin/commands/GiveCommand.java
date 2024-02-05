@@ -1,6 +1,5 @@
-package me.thegoldenmine.com.hamstercoin.Commands;
+package me.thegoldenmine.com.hamstercoin.commands;
 
-import me.thegoldenmine.com.hamstercoin.Balances;
 import me.thegoldenmine.com.hamstercoin.HexCoin;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -14,6 +13,8 @@ public class GiveCommand implements CommandExecutor {
     public GiveCommand(HexCoin plugin){
         this.plugin = plugin;
     }
+
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {

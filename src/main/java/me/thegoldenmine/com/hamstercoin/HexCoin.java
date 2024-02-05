@@ -1,6 +1,6 @@
 package me.thegoldenmine.com.hamstercoin;
 
-import me.thegoldenmine.com.hamstercoin.Commands.*;
+import me.thegoldenmine.com.hamstercoin.commands.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,7 +28,7 @@ public final class HexCoin extends JavaPlugin {
             return;
         }
         if (version.equals("N/A")) {
-            diablePlugin();
+            disablePlugin();
             return;
         }
 
@@ -48,7 +48,7 @@ public final class HexCoin extends JavaPlugin {
         }
 
         if (hexCoin == null) {
-            diablePlugin();
+            disablePlugin();
             return;
         }
 
@@ -57,7 +57,7 @@ public final class HexCoin extends JavaPlugin {
 
         } catch (IOException e) {
             getLogger().severe("Failed to read local balance");
-            diablePlugin();
+            disablePlugin();
             return;
         }
 
@@ -67,6 +67,10 @@ public final class HexCoin extends JavaPlugin {
         getCommand("givehex").setExecutor(new GiveCommand(this));
         getCommand("balhex").setExecutor(new BalCommand(this));
         getCommand("reloadhex").setExecutor(new ReloadHexCommand(this));
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            balances.shutDown();
+        }, "Shutdown-thread"));
 
         getLogger().info("Plugin Loaded!");
     }
@@ -94,7 +98,7 @@ public final class HexCoin extends JavaPlugin {
         return ChatColor.translateAlternateColorCodes('&', matcher.appendTail(buffer).toString());
     }
 
-    private void diablePlugin() {
+    private void disablePlugin() {
         getLogger().severe("Failed to setup HexCoin");
         getLogger().severe("Your server version is not compatible with this plugin!");
         Bukkit.getPluginManager().disablePlugin(this);
